@@ -1,6 +1,7 @@
 #include <iostream>
-#include "Lender.h"
 #include <string>
+#include "Lender.h"
+#include "Borrower.h"
 
 int main() {
     // Create Lenders
@@ -18,5 +19,11 @@ int main() {
     std::cout << "After updating amount lent for Lender 1:" << std::endl;
     std::cout << "Lender 1: " << lender1.getName() << ", Amount Lent: " << lender1.getAmountLent() << std::endl;
 
+    // Test Borrower
+    Borrower borrower("Air France");
+    // Affichage du nom du borrower
+    std::cout << "Borrower Name: " << borrower.getName() << std::endl;
+    borrower.setName("Easy Jet");
+    std::cout << "Borrower Name: " << borrower.getName() << std::endl;
     return 0;
 }
