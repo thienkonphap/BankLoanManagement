@@ -2,6 +2,7 @@
 #include <string>
 #include "Lender.h"
 #include "Borrower.h"
+#include "Agent.h"
 
 int main() {
     // Create Lenders
@@ -20,10 +21,17 @@ int main() {
     std::cout << "Lender 1: " << lender1.getName() << ", Amount Lent: " << lender1.getAmountLent() << std::endl;
 
     // Test Borrower
-    Borrower borrower("Air France");
+    Borrower borrower(std::string("Air France"));
     // Affichage du nom du borrower
     std::cout << "Borrower Name: " << borrower.getName() << std::endl;
-    borrower.setName("Easy Jet");
+    borrower.setName(std::string("Easy Jet"));
     std::cout << "Borrower Name: " << borrower.getName() << std::endl;
+
+    // Create an agent with a name
+    Agent agent(std::string("Main Agent"));
+
+
+    // Display the name of the agent
+    std::cout << "Agent Name: " << agent.getName() << std::endl;
     return 0;
 }

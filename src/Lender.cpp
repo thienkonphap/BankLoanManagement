@@ -3,6 +3,8 @@
 // Constructor
 Lender::Lender(const std::string& name, double amountLent)
     : name(name), amountLent(amountLent) {}
+Lender::Lender(const std::string& name)
+    : name(name), amountLent(0) {}
 
 // Get the name of the lender
 std::string Lender::getName() const {

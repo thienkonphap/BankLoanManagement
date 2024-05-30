@@ -2,9 +2,11 @@
 #define BORROWER_H
 
 #include <string>
+#include "Company.h"
+
 #include <memory> // for smart pointers
 
-class Borrower {
+class Borrower: public Company {
 public:
     // Constructors and Destructor
     Borrower();

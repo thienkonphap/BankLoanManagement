@@ -11,6 +11,7 @@ public:
 
     // Constructor
     Lender(const std::string &name, double amountLent);
+    Lender(const std::string &name);
 
     // Methods
     std::string getName() const;
