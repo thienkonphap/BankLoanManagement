@@ -6,6 +6,7 @@
 #include "Date.h"
 #include "Facility.h"
 #include "Deal.h"
+#include "Part.h"
 
 int main() {
     // Create Lenders
@@ -80,5 +81,13 @@ int main() {
     // Display deal details
     deal.displayInformation();
     deal2.displayInformation();
+
+    std::cout << "Test" << std::endl;
+    // Create a Part
+    Part part(1000.0);
+
+    // Show the amount and date of the part
+    std::cout << "Amount: " << part.getAmount() << ", Date: " << part.getDate() << std::endl;
+
     return 0;
 }
