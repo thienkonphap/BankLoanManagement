@@ -72,7 +72,7 @@ int main() {
     Deal deal2(agent, pool, borrower, 100000000, "USD", Date(2024, 5, 1), Date(2034, 5, 1), "closed");
 
     // Create a facility and attach it to the deal
-    Facility facility(Date(2024, 5, 1), Date(2034, 5, 1), 50000000, "USD", pool);
+    Facility facility(Date(2024, 5, 1), Date(2034, 5, 1), 50000000, "USD", pool, 0.1);
 
     // Add the facility to the deal
     deal.addFacility(facility);

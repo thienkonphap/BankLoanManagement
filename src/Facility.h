@@ -11,7 +11,8 @@ class Facility {
 public:
     // Constructors and Destructor
     Facility();
-    Facility(const Date& startDate, const Date& endDate, double amount, const std::string& currency, const std::vector<Lender>& lenders);
+    Facility(const Date& startDate, const Date& endDate, double amount, const std::string& currency, const std::vector<Lender>& lenders,
+            double interest);
     ~Facility();
 
     // Getters and Setters
@@ -30,6 +31,7 @@ public:
     std::vector<Lender> getLenders() const;
     void addLender(const Lender& lender);
     void displayInformation() const;
+    double getInterest() const;
 
 private:
     Date startDate;
@@ -37,6 +39,7 @@ private:
     double amount;
     std::string currency;
     std::vector<Lender> lenders;
+    double interest;
 };
 
 #endif // FACILITY_H

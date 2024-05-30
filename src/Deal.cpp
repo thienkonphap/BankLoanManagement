@@ -111,7 +111,6 @@ void Deal::displayInformation() const{
     }
     std::cout << std::endl;
 
-    int i = 0;
     for (size_t i = 0; i<getFacilities().size(); i++){
         std::cout << " ***** Facility ID = "<< i+1 << std::endl;
         getFacilities()[i].displayInformation();
