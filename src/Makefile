@@ -8,10 +8,10 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic
 TARGET = test_lender
 
 # Source files
-SRCS = main.cpp Lender.cpp Borrower.cpp Company.cpp Agent.cpp
+SRCS = main.cpp Lender.cpp Borrower.cpp Company.cpp Agent.cpp Date.cpp Facility.cpp Deal.cpp
 
 # Header files
-HEADERS = Lender.h Borrower.h Company.h Agent.h
+HEADERS = Lender.h Borrower.h Company.h Agent.h Date.h Facility.h Deal.h
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
