@@ -32,6 +32,8 @@ public:
     void addLender(const Lender& lender);
     void displayInformation() const;
     double getInterest() const;
+    void setStatus(const std::string& status);
+    std::string getStatus() const;
 
 private:
     Date startDate;
@@ -40,6 +42,7 @@ private:
     std::string currency;
     std::vector<Lender> lenders;
     double interest;
+    std::string status;
 };
 
 #endif // FACILITY_H

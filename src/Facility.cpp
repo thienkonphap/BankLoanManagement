@@ -3,7 +3,7 @@
 // Constructors and Destructor
 Facility::Facility(const Date& startDate, const Date& endDate, double amount, const std::string& currency,
                    const std::vector<Lender>& lenders, const double interest)
-    : startDate(startDate), endDate(endDate), amount(amount), currency(currency), lenders(lenders), interest(interest) {}
+    : startDate(startDate), endDate(endDate), amount(amount), currency(currency), lenders(lenders), interest(interest), status("BLOCKED") {}
 
 Facility::~Facility() {}
 
@@ -50,12 +50,19 @@ std::vector<Lender> Facility::getLenders() const {
 void Facility::addLender(const Lender& lender) {
     lenders.push_back(lender);
 }
+void Facility::setStatus(const std::string& status) {
+    this->status = status;
+}
+std::string Facility:: getStatus() const {
+    return status;
+}
 void Facility::displayInformation() const{
     std::cout << " ***** Facility Start Date: " << getStartDate() << std::endl;
     std::cout << " ***** Facility End Date: " << getEndDate() << std::endl;
     std::cout << " ***** Facility Amount: " << getAmount() << std::endl;
     std::cout << " ***** Facility Currency: " << getCurrency() << std::endl;
     std::cout << " ***** Facility Interest: " << getInterest() << std::endl;
+    std::cout << " ***** Facility Status: " << getStatus() << std::endl;
 
     std::cout << " ***** Lenders participate in Facility: ";
     for (const auto& lender : getLenders()) {
