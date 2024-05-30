@@ -5,6 +5,7 @@
 #include <vector>
 #include "Date.h"
 #include "Lender.h"
+#include "Part.h"
 
 
 class Facility {
@@ -34,6 +35,8 @@ public:
     double getInterest() const;
     void setStatus(const std::string& status);
     std::string getStatus() const;
+    std::vector<Part> getParts() const;
+    void addPart(const Part& part);
 
 private:
     Date startDate;
@@ -43,6 +46,7 @@ private:
     std::vector<Lender> lenders;
     double interest;
     std::string status;
+    std::vector<Part> parts;
 };
 
 #endif // FACILITY_H

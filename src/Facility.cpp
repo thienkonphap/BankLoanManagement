@@ -39,6 +39,7 @@ std::string Facility::getCurrency() const {
 void Facility::setCurrency(const std::string& currency) {
     this->currency = currency;
 }
+
 double Facility::getInterest() const {
     return interest;
 }
@@ -50,12 +51,15 @@ std::vector<Lender> Facility::getLenders() const {
 void Facility::addLender(const Lender& lender) {
     lenders.push_back(lender);
 }
+
 void Facility::setStatus(const std::string& status) {
     this->status = status;
 }
+
 std::string Facility:: getStatus() const {
     return status;
 }
+
 void Facility::displayInformation() const{
     std::cout << " ***** Facility Start Date: " << getStartDate() << std::endl;
     std::cout << " ***** Facility End Date: " << getEndDate() << std::endl;
@@ -69,4 +73,12 @@ void Facility::displayInformation() const{
         std::cout << lender.getName() << " ";
     }
     std::cout << std::endl;
+}
+
+std::vector<Part> Facility::getParts() const {
+    return parts;
+}
+
+void Facility::addPart(const Part& part) {
+    parts.push_back(part);
 }

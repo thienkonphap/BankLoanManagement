@@ -89,5 +89,9 @@ int main() {
     // Show the amount and date of the part
     std::cout << "Amount: " << part.getAmount() << ", Date: " << part.getDate() << std::endl;
 
+    // Add part in facility
+    facility.addPart(part);
+
+    std::cout << "Facility Parts: " << facility.getParts()[0].getDate() << std::endl;
     return 0;
 }
