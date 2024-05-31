@@ -7,36 +7,35 @@
 #include "Lender.h"
 #include "Part.h"
 
-
 class Facility {
 public:
     // Constructors and Destructor
     Facility();
-    Facility(const Date& startDate, const Date& endDate, double amount, const std::string& currency, const std::vector<Lender>& lenders,
-            double interest);
+    Facility(const Date& startDate, const Date& endDate, double amount, const std::string& currency,
+             const std::vector<Lender>& lenders, double interest);
     ~Facility();
 
-    // Getters and Setters
+    // Getters
     Date getStartDate() const;
-    void setStartDate(const Date& startDate);
-
     Date getEndDate() const;
-    void setEndDate(const Date& endDate);
-
     double getAmount() const;
-    void setAmount(double amount);
-
     std::string getCurrency() const;
-    void setCurrency(const std::string& currency);
-
-    std::vector<Lender> getLenders() const;
-    void addLender(const Lender& lender);
-    void displayInformation() const;
     double getInterest() const;
-    void setStatus(const std::string& status);
     std::string getStatus() const;
-    std::vector<Part> getParts() const;
+    const std::vector<Lender>& getLenders() const;
+    const std::vector<Part>& getParts() const;
+
+    // Setters
+    void setStartDate(const Date& startDate);
+    void setEndDate(const Date& endDate);
+    void setAmount(double amount);
+    void setCurrency(const std::string& currency);
+    void setStatus(const std::string& status);
+
+    // Methods to manage lenders and parts
+    void addLender(const Lender& lender);
     void addPart(const Part& part);
+    void displayInformation() const;
 
 private:
     Date startDate;
