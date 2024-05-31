@@ -84,7 +84,7 @@ double Facility::calculateInterest() const {
     for (const auto& part : parts) {
         // Calculate the number of days between the start date of the facility and the date of the part
         double days = startDate.differenceInDays(part.getDate());
-        totalInterest += adjustedAmount * (interestRate / 100) * (days / 365);
+        totalInterest += adjustedAmount * interestRate * (days / 365);
 
         // Update the adjusted amount
         adjustedAmount -= part.getAmount();
