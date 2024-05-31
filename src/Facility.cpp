@@ -76,6 +76,7 @@ void Facility::addPart(const Part& part) {
 // Method to calculate the interest for the facility
 double Facility::calculateInterest() const {
 
+    Date interestStartDate = startDate;
     double adjustedAmount = amount;
 
     double totalInterest = 0.0;
@@ -83,10 +84,11 @@ double Facility::calculateInterest() const {
     // Loop through the parts and calculate the interest between each part
     for (const auto& part : parts) {
         // Calculate the number of days between the start date of the facility and the date of the part
-        double days = startDate.differenceInDays(part.getDate());
+        double days = interestStartDate.differenceInDays(part.getDate());
         totalInterest += adjustedAmount * (interestRate / 100) * (days / 365);
 
-        // Update the adjusted amount
+        // Update the start date and the adjusted amount
+        interestStartDate = part.getDate();
         adjustedAmount -= part.getAmount();
     }
 
