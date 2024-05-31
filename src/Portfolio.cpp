@@ -1,18 +1,21 @@
 #include "Portfolio.h"
 
 // Constructor and Destructor
-Portfolio::Portfolio() {}
+Portfolio::Portfolio(const Deal &deal) : deal(deal) {}
 
 Portfolio::~Portfolio() {}
 
-// Methods to manage facilities
-void Portfolio::addFacility(const Facility& facility) {
-    facilities.push_back(facility);
+Deal Portfolio::getDeal() const {
+    return deal;
+}
+
+void Portfolio::setDeal(const Deal& deal) {
+    this->deal = deal;
 }
 
 double Portfolio::getTotalInterest() const {
     double totalInterest = 0.0;
-    for (const auto& facility : facilities) {
+    for (const auto& facility : getDeal().getFacilities()) {
         totalInterest += facility.calculateInterest();
     }
     return totalInterest;
@@ -20,7 +23,7 @@ double Portfolio::getTotalInterest() const {
 
 double Portfolio::getTotalPrincipal() const {
     double totalPrincipal = 0.0;
-    for (const auto& facility : facilities) {
+    for (const auto& facility : getDeal().getFacilities()) {
         totalPrincipal += facility.getAmount();
     }
     return totalPrincipal;

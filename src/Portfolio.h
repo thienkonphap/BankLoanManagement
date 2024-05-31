@@ -3,20 +3,23 @@
 
 #include <vector>
 #include "Facility.h"
+#include "Deal.h"
 
 class Portfolio {
 public:
     // Constructor and Destructor
-    Portfolio();
+    Portfolio(const Deal &deal);
     ~Portfolio();
 
-    // Methods to manage facilities
-    void addFacility(const Facility& facility);
     double getTotalInterest() const;
     double getTotalPrincipal() const;
 
+    Deal getDeal() const;
+    void setDeal(const Deal& deal);
+
 private:
-    std::vector<Facility> facilities;
+    Deal deal;
+
 };
 
 #endif // PORTFOLIO_H

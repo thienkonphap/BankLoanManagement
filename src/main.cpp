@@ -7,6 +7,7 @@
 #include "Facility.h"
 #include "Deal.h"
 #include "Part.h"
+#include "Portfolio.h"
 
 using namespace std;
 void showMainMenu();
@@ -102,6 +103,7 @@ int main() {
     facility.addPart(part);
 
     std::cout << "Facility Parts: " << facility.getParts()[0].getDate() << std::endl;
+
     showMainMenu();
     return 0;
 }
