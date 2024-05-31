@@ -7,9 +7,9 @@
 
 class Part {
 public:
-    // Constructors and Destructor
+    // Constructors
     Part(double amount);
-    Part(double amount, Date date);
+    Part(double amount, const Date& date);
 
     double getAmount() const;
     Date getDate() const;
@@ -17,6 +17,9 @@ public:
 private:
     double amount;
     Date date;
+
+    // Helper function to get the current date
+    static Date getCurrentDate();
 };
 
-#endif //PART_H
+#endif // PART_H
