@@ -8,6 +8,15 @@
 #include "Deal.h"
 #include "Part.h"
 
+using namespace std;
+void showMainMenu();
+void showDealMenu();
+void seeAllDeals();
+void createDeal();
+// Global vectors to store object
+std::vector<Deal> deals;
+
+
 int main() {
     // Create Lenders
     Lender lender1(std::string("Bank A"), 500.0);
@@ -71,7 +80,7 @@ int main() {
     // Create a deal
     Deal deal(agent, pool, borrower, 100000000, "USD", Date(2024, 5, 1), Date(2034, 5, 1), "closed");
     Deal deal2(agent, pool, borrower, 100000000, "USD", Date(2024, 5, 1), Date(2034, 5, 1), "closed");
-
+    deals.push_back((deal));
     // Create a facility and attach it to the deal
     Facility facility(Date(2024, 5, 1), Date(2034, 5, 1), 50000000, "USD", pool, 0.1);
 
@@ -93,5 +102,101 @@ int main() {
     facility.addPart(part);
 
     std::cout << "Facility Parts: " << facility.getParts()[0].getDate() << std::endl;
+    showMainMenu();
     return 0;
+}
+
+void showMainMenu() {
+    int choice;
+    do {
+        std::cout << "Main Menu:\n";
+        std::cout << "1. Deal\n";
+        std::cout << "2. Lender\n";
+        std::cout << "3. Borrower\n";
+        std::cout << "4. Exit\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+        switch (choice) {
+            case 1:
+                showDealMenu();
+                break;
+            case 2:
+            break;
+            case 3:
+            break;
+            case 4:
+                std::cout << "Exiting...\n";
+            break;
+            default:
+                std::cout << "Invalid choice, please try again.\n";
+        }
+    } while (choice != 4);
+}
+void showDealMenu() {
+    int choice;
+    do {
+        std::cout << "Deal Menu:\n";
+        std::cout << "1.1 See all deals\n";
+        std::cout << "1.2 Create a deal\n";
+        std::cout << "1.3 Back to main menu\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+        switch (choice) {
+            case 1:
+                seeAllDeals();
+                break;
+            case 2:
+                createDeal();
+                break;
+            case 3:
+                return;
+            default:
+                std::cout << "Invalid choice, please try again.\n";
+        }
+    } while (true);
+}
+void seeAllDeals() {
+    std::cout << "All Deals:\n";
+    for (const auto& deal : deals) {
+        deal.displayInformation();
+    }
+}
+void createDeal() {
+    string agentName, borrowerName, currency, status;
+    double projectAmount;
+    int startYear, startMonth, startDay, endYear, endMonth, endDay;
+
+    std::cout << "Enter agent name: ";
+    getline(cin >> ws, agentName);
+    Agent agent(agentName);
+
+    std::cout << "Enter borrower name: ";
+    getline(cin, borrowerName);
+    Borrower borrower(borrowerName);
+
+    std::cout << "Enter project amount: ";
+    std::cin >> projectAmount;
+
+    std::cout << "Enter currency: ";
+    std::cin.ignore();
+    getline(cin, currency);
+
+
+    std::cout << "Enter start date (YYYY MM DD): ";
+    std::cin >> startYear >> startMonth >> startDay;
+    Date startDate(startYear, startMonth, startDay);
+
+    std::cout << "Enter end date (YYYY MM DD): ";
+    std::cin >> endYear >> endMonth >> endDay;
+    Date endDate(endYear, endMonth, endDay);
+
+    std::cout << "Enter status: ";
+    std::cin.ignore();
+    std::getline(std::cin, status);
+
+    std::vector<Lender> lenderPool;
+    Deal createDealtmp(agent, lenderPool, borrower, projectAmount, currency, startDate, endDate, status);
+    deals.push_back(createDealtmp);
+
+    std::cout << "Deal created successfully.\n";
 }
