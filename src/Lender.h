@@ -2,23 +2,21 @@
 #define LENDER_H
 
 #include <string>
+#include "Company.h"
 
-class Lender {
+class Lender : public Company {
 public:
-    // Atributes
-    std::string name;
-    double amountLent;
+    // Constructors
+    Lender();
+    Lender(const std::string& name, double amountLent);
+    Lender(const std::string& name);
 
-    // Constructor
-    Lender(const std::string &name, double amountLent);
-    Lender(const std::string &name);
-
-    // Methods
-    std::string getName() const;
+    // Getters and Setters
     double getAmountLent() const;
     void setAmountLent(double amount);
+
 private:
-// You can add private attributes or methods if needed
+    double amountLent;
 };
 
 #endif // LENDER_H

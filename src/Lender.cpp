@@ -1,15 +1,13 @@
 #include "Lender.h"
 
-// Constructor
-Lender::Lender(const std::string& name, double amountLent)
-    : name(name), amountLent(amountLent) {}
-Lender::Lender(const std::string& name)
-    : name(name), amountLent(0) {}
+// Constructors
+Lender::Lender() : Company(), amountLent(0) {}
 
-// Get the name of the lender
-std::string Lender::getName() const {
-    return name;
-}
+Lender::Lender(const std::string& name, double amountLent)
+        : Company(name), amountLent(amountLent) {}
+
+Lender::Lender(const std::string& name)
+        : Company(name), amountLent(0) {}
 
 // Get the amount lent by the lender
 double Lender::getAmountLent() const {
