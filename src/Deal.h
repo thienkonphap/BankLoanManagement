@@ -7,8 +7,7 @@
 #include "Borrower.h"
 #include "Date.h"
 #include "Lender.h"
-
-class Facility;
+#include "Facility.h"
 
 class Deal {
 public:
@@ -18,42 +17,36 @@ public:
          const Date& startDate, const Date& endDate, const std::string& status);
     ~Deal();
 
-    // Getters and Setters
+    // Getters
     std::string getContractNumber() const;
-
     const Agent& getAgent() const;
-
-    std::vector<Lender> getPool() const;
-
+    const std::vector<Lender>& getPool() const;
     const Borrower& getBorrower() const;
-
     double getProjectAmount() const;
-    void setProjectAmount(double projectAmount);
-
     std::string getCurrency() const;
-    void setCurrency(const std::string& currency);
-
     Date getStartDate() const;
-    void setStartDate(const Date& startDate);
-
     Date getEndDate() const;
-    void setEndDate(const Date& endDate);
-
     std::string getStatus() const;
+
+    // Setters
+    void setProjectAmount(double projectAmount);
+    void setCurrency(const std::string& currency);
+    void setStartDate(const Date& startDate);
+    void setEndDate(const Date& endDate);
     void setStatus(const std::string& status);
 
     // Methods to manage facilities
     void addFacility(const Facility& facility);
-    std::vector<Facility> getFacilities() const;
+    const std::vector<Facility>& getFacilities() const;
     void displayInformation() const;
 
 private:
     static int contractCounter; // Static variable to keep track of the contract numbers
 
     std::string contractNumber;
-    const Agent& agent;
+    Agent agent;
     std::vector<Lender> pool;
-    const Borrower& borrower;
+    Borrower borrower;
     double projectAmount;
     std::string currency;
     Date startDate;
