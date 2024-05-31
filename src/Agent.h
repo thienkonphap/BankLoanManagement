@@ -7,7 +7,7 @@ class Agent : public Lender {
 public:
     // Constructors and Destructor
     Agent(const std::string& name);
-    ~Agent();
+    virtual ~Agent();
 };
 
 #endif // AGENT_H

@@ -1,7 +1,7 @@
 #include "Agent.h"
 
-// Constructors and Destructor
-
+// Constructor
 Agent::Agent(const std::string& name) : Lender(name) {}
 
+// Destructor
 Agent::~Agent() {}
