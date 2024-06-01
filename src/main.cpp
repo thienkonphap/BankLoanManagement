@@ -17,10 +17,11 @@ void createDeal();
 void seeAllBorrowers();
 void createBorrower();
 void borrowerMenu();
-void createFacility();
+void createFacility(int dealIndex);
 void showAllLenders();
 void showLenderMenu();
 void createLender();
+void getDealDetail();
 // Global vectors to store object
 std::vector<Deal> deals;
 std::vector<Lender> lenders;
@@ -151,7 +152,7 @@ void showDealMenu() {
         std::cout << "Deal Menu:\n";
         std::cout << "1.1 See all deals\n";
         std::cout << "1.2 Create a deal\n";
-        std::cout << "1.3 Add Facility to Deal\n";
+        std::cout << "1.3 See a deal detail\n";
         std::cout << "1.4 Back to main menu\n";
         std::cout << "Enter your choice: ";
         std::cin >> choice;
@@ -163,7 +164,7 @@ void showDealMenu() {
                 createDeal();
                 break;
             case 3:
-                createFacility();
+                getDealDetail();
                 break;
             case 4:
                 return;
@@ -256,16 +257,13 @@ void createBorrower() {
     borrowers.push_back(borrower);
     std::cout << "Borrower created successfully.\n";
 }
-void createFacility() {
-    int dealIndex;
+void createFacility(int dealIndex) {
     double amount;
     double interest;
     std::string currency;
     int startYear, startMonth, startDay, endYear, endMonth, endDay;
     std::string statusChoice;
 
-    std::cout << "Add Facility for Deal: ";
-    std::cin >> dealIndex;
     Deal& deal = deals[dealIndex-1];
     std::cout << "Enter facility amount: ";
     std::cin >> amount;
@@ -294,11 +292,10 @@ void createFacility() {
     do {
         string lenderName;
         std::cout << "Enter Lender Name: ";
-        std::cin.ignore();
-        std::getline(std::cin, lenderName);
+        std::getline(std::cin >> ws, lenderName);
         Lender lenderTmp(lenderName);
         bool isLenderExist = false;
-        for(size_t i =0; i<lenders.size(); i++) {
+        for (size_t i =0; i<lenders.size(); i++) {
             if(lenders[i].getName() == lenderName) {
                 isLenderExist = true;
                 lenderList.push_back(lenders[i]);
@@ -312,9 +309,12 @@ void createFacility() {
         }
         cout << "Add another lender to this facility? (y/n): ";
         cin >> addLender;
+        std::cin.ignore();
     } while (addLender == 'y');
     Facility facility(startDate, endDate, amount, currency, lenderList, interest);
     deal.addFacility(facility);
+    cout << "Faicility created successfully" << std::endl;
+    deal.displayInformation();
 }
 void showLenderMenu() {
     int choice;
@@ -351,4 +351,32 @@ void createLender() {
     std::getline(std::cin, lenderName);
     Lender lenderTmp(lenderName);
     lenders.push_back(lenderTmp);
+}
+void getDealDetail() {
+    int dealIndex;
+    cout << "Enter index Deal (number in Deal's contract number): ";
+    std::cin >> dealIndex;
+    Deal& dealByIndex = deals[dealIndex-1];
+    dealByIndex.displayInformation();
+
+    int choice;
+    do {
+        std::cout << "Option for contract number: " << dealByIndex.getContractNumber() << std::endl;
+        std::cout << "3.1 Add Facility\n";
+        std::cout << "3.2 Add Part to Facility\n";
+        std::cout << "3.3 Back to main menu\n";
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+        switch (choice) {
+            case 1:
+                createFacility(dealIndex);
+            break;
+            case 2:
+            break;
+            case 3:
+                return;
+            default:
+                std::cout << "Invalid choice, please try again.\n";
+        }
+    } while (true);
 }
