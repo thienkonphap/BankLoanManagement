@@ -10,4 +10,5 @@ add_executable(Projet
         src/Borrower.h
         src/Lender.cpp
         src/Lender.h
-        src/main.cpp)
+        src/main.cpp
+        src/Portfolio.cpp)

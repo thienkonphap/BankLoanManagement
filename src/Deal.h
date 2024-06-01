@@ -37,8 +37,8 @@ public:
 
     // Methods to manage facilities
     void addFacility(const Facility& facility);
-    const std::vector<Facility>& getFacilities() const;
-    void displayInformation() const;
+    std::vector<Facility>& getFacilities();
+    void displayInformation();
 
 private:
     static int contractCounter; // Static variable to keep track of the contract numbers

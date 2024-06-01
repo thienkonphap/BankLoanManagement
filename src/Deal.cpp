@@ -81,7 +81,7 @@ void Deal::addFacility(const Facility& facility) {
     facilities.push_back(facility);
 }
 
-const std::vector<Facility>& Deal::getFacilities() const {
+std::vector<Facility>& Deal::getFacilities() {
     return facilities;
 }
 
@@ -95,7 +95,7 @@ std::string Deal::generateContractNumber() {
     return oss.str();
 }
 
-void Deal::displayInformation() const {
+void Deal::displayInformation() {
     std::cout << "********* Contract Number: " << contractNumber << " *********" << std::endl;
     std::cout << "Contract Number: " << contractNumber << std::endl;
     std::cout << "Agent: " << getAgent().getName() << std::endl;
