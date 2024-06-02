@@ -97,7 +97,6 @@ int main() {
 
     // Add the facility to the deal
     deal.addFacility(facility);
-    deal.addFacility(Facility(Date(2024, 5, 1), Date(2034, 5, 1), 50000000, "USD", pool, 0.1));
 
     // Display deal details
     deal.displayInformation();
@@ -115,19 +114,7 @@ int main() {
 
     std::cout << "Facility Parts: " << facility.getParts()[0].getDate() << std::endl;
 
-    // Create a portfolio
-    Portfolio portfolio(deal);
-
-    portfolio.getDeal().getFacilities()[0].addPart(Part(5000.0));
-    portfolio.getDeal().getFacilities()[1].addPart(Part(10000.0));
-
-    std::cout << "Portfolio Information: " << std::endl;
-    portfolio.getDeal().displayInformation();
-
-    // Check the size of listParts in the first facility
-    std::cout << "Size of listParts in the first facility: " << portfolio.getDeal().getFacilities()[0].getParts()[0].getDate() << std::endl;
-
-    //showMainMenu();
+    showMainMenu();
     return 0;
 }
 
@@ -188,7 +175,7 @@ void showDealMenu() {
 }
 void seeAllDeals() {
     std::cout << "All Deals:\n";
-    for (Deal deal : deals) {
+    for (const auto& deal : deals) {
         deal.displayInformation();
     }
 }
