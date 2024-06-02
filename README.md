@@ -59,7 +59,7 @@ Date de début (YYYY MM DD)<br>
 Date de fin (YYYY MM DD)<br>
 Statut<br>
 
-## Créer une Facilité pour un Deal
+## Créer une Facility pour un Deal
 Sélectionnez l'option 1 dans le menu principal pour accéder au sous-menu Deal.
 Sélectionnez l'option 1.3 pour gérer les facilités d'un accord.
 Entrez l'index de l'accord pour lequel vous souhaitez gérer les facilités.
